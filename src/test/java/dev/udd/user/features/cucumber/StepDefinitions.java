@@ -35,6 +35,17 @@ public class StepDefinitions {
         response = this.client.postForEntity(URL + port + path, entity, String.class);
     }
 
+    @When("^I send a PUT request to (.+) with body:$")
+    public void iSendAPUTRequestToWithBody(final String path, final String bodyJson) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        response = null;
+        HttpEntity<String> entity = new HttpEntity<>(bodyJson, headers);
+        this.client.put(URL + port + path, entity);
+    }
+
     @Then("^I should receive an empty body$")
     public void iShouldReceiveAnEmptyBody() {
 
@@ -49,6 +60,7 @@ public class StepDefinitions {
 
     @When("^I send a GET request to (.+)$")
     public void iSendAGETRequestTo(final String path) {
+
         response = null;
         try {
             response = this.client.getForEntity(URL + port + path, String.class);
