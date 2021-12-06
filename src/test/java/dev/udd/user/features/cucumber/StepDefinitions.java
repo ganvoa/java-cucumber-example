@@ -10,6 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -48,8 +49,18 @@ public class StepDefinitions {
 
     @When("^I send a GET request to (.+)$")
     public void iSendAGETRequestTo(final String path) {
+        response = null;
+        try {
+            response = this.client.getForEntity(URL + port + path, String.class);
+        } catch (HttpClientErrorException.NotFound e) {
+            response = new ResponseEntity<String>(e.getResponseBodyAsString(), e.getStatusCode());
+        }
+    }
 
-        response = this.client.getForEntity(URL + port + path, String.class);
+    @When("^I send a DELETE request to (.+)$")
+    public void iSendADeleteRequestTo(final String path) {
+
+        this.client.delete(URL + port + path);
     }
 
     @Then("I should receive the following body:")

@@ -10,4 +10,6 @@ public interface UserRepository {
 
     User getByUsername(UserUsername username);
 
+    void delete(User user);
+
 }
