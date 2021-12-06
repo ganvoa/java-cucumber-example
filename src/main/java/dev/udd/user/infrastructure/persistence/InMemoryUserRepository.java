@@ -46,4 +46,10 @@ final public class InMemoryUserRepository implements UserRepository {
         return null;
     }
 
+    @Override
+    public void delete(User user) {
+
+        USERS.remove(user.id());
+    }
+
 }
