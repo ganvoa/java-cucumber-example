@@ -2,16 +2,17 @@
 
 .PHONY: build
 build:
-	@docker build -t udd .
+	@./gradlew build
 
 .PHONY: run
-run: build
-	@docker run -it --rm -p 8888:8081 udd mvn spring-boot:run
-
-.PHONY: bash
-bash: build
-	@docker run -v $(pwd):/app -it --rm udd bash
+run:
+	@./gradlew bootRun
 
 .PHONY: test
-test: build
-	@docker run -it --rm udd mvn test
+test:
+	@./gradlew test
+
+.PHONY: dev
+dev:
+	@docker build -f local.Dockerfile -t udd .
+	@docker run -p 8888:8081 -v $(shell pwd):/app -it --rm udd bash
