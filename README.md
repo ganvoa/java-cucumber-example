@@ -1,4 +1,6 @@
 
+[![CircleCI](https://circleci.com/gh/ganvoa/udd/tree/main.svg?style=svg)](https://circleci.com/gh/ganvoa/udd/tree/main)
+
 ### Prerequisites
 
  - [docker](https://docs.docker.com/get-docker/) 
