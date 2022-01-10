@@ -21,16 +21,15 @@ public final class UserFinder {
 
     public UserResponse find(UserFindQuery query) throws UserNotFound, UserValueInvalid {
 
-        UserId userId = UserId.fromString(query.getUuid());
-
-        User user = ensureUserExists(userId);
+        var userId = UserId.fromString(query.getUuid());
+        var user = ensureUserExists(userId);
 
         return this.mapper.response(user);
     }
 
     private User ensureUserExists(UserId userId) throws UserNotFound {
 
-        User user = repository.getById(userId);
+        var user = repository.getById(userId);
 
         if (user == null) {
             throw new UserNotFound(userId);

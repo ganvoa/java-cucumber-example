@@ -9,7 +9,7 @@ public class UserName {
         this.value = value;
     }
 
-    public static UserName fromString(String name) throws UserValueInvalid, UserValueInvalid {
+    public static UserName fromString(String name) throws UserValueInvalid {
 
         if (name == null) {
             throw new UserValueInvalid("name is invalid");

@@ -18,7 +18,7 @@ import dev.udd.user.domain.UserRepository;
 import dev.udd.user.domain.UserValueInvalid;
 
 @ExtendWith(MockitoExtension.class)
-public final class UserDeleterTest {
+class UserDeleterTest {
 
     @Mock
     UserRepository userRepository;
@@ -27,7 +27,7 @@ public final class UserDeleterTest {
     UserDeleter userDeleter;
 
     @Test
-    public void whenUserNotFoundShouldThrowUserNotFound() {
+    void whenUserNotFoundShouldThrowUserNotFound() {
 
         assertThrows(UserNotFound.class, () -> {
 
@@ -40,7 +40,7 @@ public final class UserDeleterTest {
     }
 
     @Test
-    public void whenInvalidArgumentShouldThrowUserValueInvalid() {
+    void whenInvalidArgumentShouldThrowUserValueInvalid() {
 
         assertThrows(UserValueInvalid.class, () -> {
 
@@ -51,7 +51,7 @@ public final class UserDeleterTest {
     }
 
     @Test
-    public void whenUserExistsShouldDelete() throws UserValueInvalid, UserNotFound {
+    void whenUserExistsShouldDelete() throws UserValueInvalid, UserNotFound {
 
         User user = UserMother.withId("b8bd9278-b164-49a4-ad50-77df7ace8cec");
         UserDeleteCommand command = new UserDeleteCommand(user.id().value());

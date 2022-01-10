@@ -9,9 +9,8 @@ public final class UserMapper {
 
     public UserResponse response(User user) {
 
-        UserResponse response = new UserResponse(user.username().value(), user.name().value(),
-                user.email().value(), user.id().value());
-        return response;
+        return new UserResponse(user.username().value(), user.name().value(), user.email().value(),
+                user.id().value());
     }
 
 }

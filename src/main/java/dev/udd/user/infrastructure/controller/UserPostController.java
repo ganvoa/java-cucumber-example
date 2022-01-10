@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import dev.udd.shared.application.ErrorResponse;
 import dev.udd.user.application.UserCreator;
-import dev.udd.user.application.command.UserCreateCommand;
+import dev.udd.user.application.command.UserUpdateOrCreateCommand;
 import dev.udd.user.domain.UserAlreadyExists;
 import dev.udd.user.domain.UserValueInvalid;
 
@@ -20,7 +20,7 @@ public final class UserPostController {
     public UserCreator userCreator;
 
     @PostMapping("/users")
-    public ResponseEntity<Object> postUser(@RequestBody UserCreateCommand command) {
+    public ResponseEntity<Object> postUser(@RequestBody UserUpdateOrCreateCommand command) {
 
         try {
             this.userCreator.create(command);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import dev.udd.shared.application.ErrorResponse;
 import dev.udd.user.application.UserUpdater;
-import dev.udd.user.application.command.UserUpdateCommand;
+import dev.udd.user.application.command.UserUpdateOrCreateCommand;
 import dev.udd.user.domain.UserAlreadyExists;
 import dev.udd.user.domain.UserNotFound;
 import dev.udd.user.domain.UserValueInvalid;
@@ -22,7 +22,7 @@ public final class UserPutController {
 
     @PutMapping("/users/{userId}")
     public ResponseEntity<Object> putUser(@PathVariable String userId,
-            @RequestBody UserUpdateCommand command) {
+            @RequestBody UserUpdateOrCreateCommand command) {
 
         command.setUuid(userId);
 

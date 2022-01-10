@@ -12,7 +12,7 @@ public class CucumberSpringConfiguration {
     @Before
     public void before() {
 
-        InMemoryUserRepository.USERS.clear();
+        InMemoryUserRepository.clear();
     }
 
 }

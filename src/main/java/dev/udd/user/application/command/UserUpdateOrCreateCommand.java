@@ -1,6 +1,6 @@
 package dev.udd.user.application.command;
 
-public final class UserUpdateCommand {
+public final class UserUpdateOrCreateCommand {
 
     private String name;
     private String username;
@@ -8,7 +8,7 @@ public final class UserUpdateCommand {
     private String password;
     private String email;
 
-    public UserUpdateCommand(String name, String username, String uuid, String password,
+    public UserUpdateOrCreateCommand(String name, String username, String uuid, String password,
             String email) {
 
         this.name = name;
@@ -33,11 +33,6 @@ public final class UserUpdateCommand {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
-
-        this.uuid = uuid;
-    }
-
     public String getPassword() {
 
         return password;
@@ -46,6 +41,11 @@ public final class UserUpdateCommand {
     public String getEmail() {
 
         return email;
+    }
+
+    public void setUuid(String uuid) {
+
+        this.uuid = uuid;
     }
 
 }

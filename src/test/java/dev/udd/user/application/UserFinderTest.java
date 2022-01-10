@@ -1,5 +1,6 @@
 package dev.udd.user.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ import dev.udd.user.domain.UserRepository;
 import dev.udd.user.domain.UserValueInvalid;
 
 @ExtendWith(MockitoExtension.class)
-public final class UserFinderTest {
+class UserFinderTest {
 
     @Mock
     UserRepository userRepository;
@@ -30,7 +31,7 @@ public final class UserFinderTest {
     UserFinder userFinder;
 
     @Test
-    public void whenUserNotFoundShouldThrowUserNotFound() {
+    void whenUserNotFoundShouldThrowUserNotFound() {
 
         assertThrows(UserNotFound.class, () -> {
 
@@ -43,7 +44,7 @@ public final class UserFinderTest {
     }
 
     @Test
-    public void whenInvalidArgumentShouldThrowUserValueInvalid() {
+    void whenInvalidArgumentShouldThrowUserValueInvalid() {
 
         assertThrows(UserValueInvalid.class, () -> {
 
@@ -54,7 +55,7 @@ public final class UserFinderTest {
     }
 
     @Test
-    public void whenUserExistsShouldReturnUserResponse() throws UserValueInvalid, UserNotFound {
+    void whenUserExistsShouldReturnUserResponse() throws UserValueInvalid, UserNotFound {
 
         User user = UserMother.withId("b8bd9278-b164-49a4-ad50-77df7ace8cec");
         UserFindQuery query = new UserFindQuery(user.id().value());
@@ -62,11 +63,11 @@ public final class UserFinderTest {
         when(userRepository.getById(user.id())).thenReturn(user);
         UserResponse response = userFinder.find(query);
 
-        assert response.getEmail().equals(user.email().value());
-        assert response.getUuid().equals(user.id().value());
-        assert response.getUuid().equals(user.id().value());
-        assert response.getUsername().equals(user.username().value());
-        assert response.getName().equals(user.name().value());
+        assertEquals(response.getEmail(), user.email().value());
+        assertEquals(response.getUuid(), user.id().value());
+        assertEquals(response.getUuid(), user.id().value());
+        assertEquals(response.getUsername(), user.username().value());
+        assertEquals(response.getName(), user.name().value());
     }
 
 }

@@ -22,7 +22,7 @@ public final class UserGetController {
     @GetMapping("/users/{userId}")
     public ResponseEntity<Object> getUser(@PathVariable String userId) {
 
-        UserFindQuery query = new UserFindQuery(userId);
+        var query = new UserFindQuery(userId);
         UserResponse userResponse = null;
 
         try {

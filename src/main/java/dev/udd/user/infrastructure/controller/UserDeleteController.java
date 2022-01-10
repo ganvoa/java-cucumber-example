@@ -21,7 +21,7 @@ public final class UserDeleteController {
     @DeleteMapping("/users/{userId}")
     public ResponseEntity<Object> deleteUser(@PathVariable String userId) {
 
-        UserDeleteCommand command = new UserDeleteCommand(userId);
+        var command = new UserDeleteCommand(userId);
 
         try {
             this.service.delete(command);
