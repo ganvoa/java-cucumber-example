@@ -1,6 +1,6 @@
 package dev.udd.user.application.command;
 
-final public class UserCreateCommand {
+public final class UserCreateCommand {
 
     private String name;
     private String username;
@@ -8,7 +8,8 @@ final public class UserCreateCommand {
     private String password;
     private String email;
 
-    public UserCreateCommand(String name, String username, String uuid, String password, String email) {
+    public UserCreateCommand(String name, String username, String uuid, String password,
+            String email) {
 
         this.name = name;
         this.username = username;

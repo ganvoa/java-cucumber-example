@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
 import dev.udd.shared.application.ErrorResponse;
 import dev.udd.user.application.UserFinder;
 import dev.udd.user.application.query.UserFindQuery;
@@ -15,7 +14,7 @@ import dev.udd.user.domain.UserNotFound;
 import dev.udd.user.domain.UserValueInvalid;
 
 @RestController
-final public class UserGetController {
+public final class UserGetController {
 
     @Autowired
     public UserFinder service;
@@ -29,9 +28,11 @@ final public class UserGetController {
         try {
             userResponse = this.service.find(query);
         } catch (UserNotFound e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(e.getMessage(), 404));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse(e.getMessage(), 404));
         } catch (UserValueInvalid e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(e.getMessage(), 400));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage(), 400));
         }
 
         return ResponseEntity.ok().body(userResponse);

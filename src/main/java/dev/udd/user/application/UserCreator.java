@@ -2,7 +2,6 @@ package dev.udd.user.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import dev.udd.user.application.command.UserCreateCommand;
 import dev.udd.user.domain.User;
 import dev.udd.user.domain.UserAlreadyExists;
@@ -15,7 +14,7 @@ import dev.udd.user.domain.UserUsername;
 import dev.udd.user.domain.UserValueInvalid;
 
 @Component
-final public class UserCreator {
+public final class UserCreator {
 
     @Autowired
     private UserRepository repository;

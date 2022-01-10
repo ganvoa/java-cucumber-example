@@ -1,6 +1,6 @@
 package dev.udd.user.application.response;
 
-final public class UserResponse {
+public final class UserResponse {
 
     private String username;
     private String name;

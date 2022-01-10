@@ -20,8 +20,7 @@ public final class UserEmail {
         boolean isValid = Pattern
                 .compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                         + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
-                .matcher(email)
-                .matches();
+                .matcher(email).matches();
 
         if (!isValid) {
             throw new UserValueInvalid("email is invalid");

@@ -2,7 +2,7 @@ package dev.udd.user.domain;
 
 import com.github.javafaker.Faker;
 
-final public class UserMother {
+public final class UserMother {
 
     public static User withId(String uuid) throws UserValueInvalid {
 

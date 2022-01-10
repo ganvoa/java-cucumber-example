@@ -8,7 +8,8 @@ public class User {
     private UserPassword password;
     private UserUsername username;
 
-    public User(UserId userId, UserName name, UserEmail email, UserUsername username, UserPassword password) {
+    public User(UserId userId, UserName name, UserEmail email, UserUsername username,
+            UserPassword password) {
 
         this.userId = userId;
         this.name = name;

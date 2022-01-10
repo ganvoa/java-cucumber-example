@@ -2,14 +2,12 @@ package dev.udd.user.application;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import dev.udd.user.application.query.UserFindQuery;
 import dev.udd.user.application.response.UserResponse;
 import dev.udd.user.domain.User;
@@ -20,7 +18,7 @@ import dev.udd.user.domain.UserRepository;
 import dev.udd.user.domain.UserValueInvalid;
 
 @ExtendWith(MockitoExtension.class)
-final public class UserFinderTest {
+public final class UserFinderTest {
 
     @Mock
     UserRepository userRepository;

@@ -1,7 +1,6 @@
 package dev.udd.user.features.cucumber;
 
 import org.springframework.boot.test.context.SpringBootTest;
-
 import dev.udd.user.infrastructure.persistence.InMemoryUserRepository;
 import io.cucumber.java.Before;
 import io.cucumber.spring.CucumberContextConfiguration;

@@ -1,6 +1,6 @@
 package dev.udd.shared.application;
 
-final public class ErrorResponse {
+public final class ErrorResponse {
 
     private String message;
     private int code;

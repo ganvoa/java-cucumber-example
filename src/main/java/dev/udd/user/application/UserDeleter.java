@@ -2,7 +2,6 @@ package dev.udd.user.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import dev.udd.user.application.command.UserDeleteCommand;
 import dev.udd.user.domain.User;
 import dev.udd.user.domain.UserId;
@@ -11,7 +10,7 @@ import dev.udd.user.domain.UserRepository;
 import dev.udd.user.domain.UserValueInvalid;
 
 @Service
-final public class UserDeleter {
+public final class UserDeleter {
 
     @Autowired
     public UserRepository repository;
