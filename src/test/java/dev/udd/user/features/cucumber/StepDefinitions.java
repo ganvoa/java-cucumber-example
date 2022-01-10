@@ -1,8 +1,7 @@
 package dev.udd.user.features.cucumber;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import org.json.JSONException;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -13,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class StepDefinitions {
 

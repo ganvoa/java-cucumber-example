@@ -2,7 +2,7 @@ package dev.udd.user.domain;
 
 import java.util.regex.Pattern;
 
-final public class UserEmail {
+public final class UserEmail {
 
     private String value;
 
@@ -17,7 +17,9 @@ final public class UserEmail {
             throw new UserValueInvalid("email is invalid");
         }
 
-        boolean isValid = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
+        boolean isValid = Pattern
+                .compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
                 .matcher(email)
                 .matches();
 

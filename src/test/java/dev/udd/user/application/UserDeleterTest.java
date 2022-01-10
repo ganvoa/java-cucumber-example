@@ -1,8 +1,9 @@
 package dev.udd.user.application;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.when;
 
-import dev.udd.user.application.command.UserDeleteCommand;
-import dev.udd.user.domain.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,9 +11,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.when;
+import dev.udd.user.application.command.UserDeleteCommand;
+import dev.udd.user.domain.User;
+import dev.udd.user.domain.UserId;
+import dev.udd.user.domain.UserMother;
+import dev.udd.user.domain.UserNotFound;
+import dev.udd.user.domain.UserRepository;
+import dev.udd.user.domain.UserValueInvalid;
 
 @ExtendWith(MockitoExtension.class)
 final public class UserDeleterTest {
@@ -57,7 +62,8 @@ final public class UserDeleterTest {
 
         userDeleter.delete(command);
 
-        Mockito.verify(userRepository, Mockito.times(1)).delete(argThat(userDeleted -> user.id().equals(userDeleted.id())));
+        Mockito.verify(userRepository, Mockito.times(1))
+                .delete(argThat(userDeleted -> user.id().equals(userDeleted.id())));
     }
 
 }

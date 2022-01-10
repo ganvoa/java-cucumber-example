@@ -1,24 +1,25 @@
 package dev.udd.user.application;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.when;
 
-import dev.udd.user.application.command.UserCreateCommand;
-import dev.udd.user.domain.*;
-import io.cucumber.junit.Cucumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.when;
+import dev.udd.user.application.command.UserCreateCommand;
+import dev.udd.user.domain.User;
+import dev.udd.user.domain.UserAlreadyExists;
+import dev.udd.user.domain.UserMother;
+import dev.udd.user.domain.UserRepository;
+import dev.udd.user.domain.UserValueInvalid;
 
 @ExtendWith(MockitoExtension.class)
 public class UserCreatorTest {
@@ -34,14 +35,18 @@ public class UserCreatorTest {
 
         User user = UserMother.withId("b8bd9278-b164-49a4-ad50-77df7ace8cec");
 
-        UserCreateCommand command = new UserCreateCommand(user.name().value(), user.username().value(), user.id().value(), user.password()
-                .value(), user.email().value());
+        UserCreateCommand command = new UserCreateCommand(user.name().value(), user.username().value(),
+                user.id().value(), user.password()
+                        .value(),
+                user.email().value());
         userCreator.create(command);
 
         Mockito.verify(userRepository, Mockito.times(1))
-                .save(argThat(userSaved -> user.id().equals(userSaved.id()) & user.email().equals(userSaved.email()) & user.name()
-                        .equals(userSaved.name()) & user.username().equals(userSaved.username()) & user.password()
-                        .equals(userSaved.password())));
+                .save(argThat(userSaved -> user.id().equals(userSaved.id()) & user.email().equals(userSaved.email())
+                        & user.name()
+                                .equals(userSaved.name())
+                        & user.username().equals(userSaved.username()) & user.password()
+                                .equals(userSaved.password())));
 
     }
 
@@ -68,8 +73,9 @@ public class UserCreatorTest {
             "juan perez,jperez,b8bd9278-b164-49a4-ad50-77df7ace8cec,,jperez@mail.com, password is invalid",
             "juan perez,jperez,b8bd9278-b164-49a4-ad50-77df7ace8cec,changemepls,jperez, email is invalid"
     })
-    public void whenInvalidValueThrowUserValueInvalid(String name, String username, String uuid, String password, String email,
-                                                      String excpectedMessage) {
+    public void whenInvalidValueThrowUserValueInvalid(String name, String username, String uuid, String password,
+            String email,
+            String excpectedMessage) {
 
         UserValueInvalid userValueInvalid = assertThrows(UserValueInvalid.class, () -> {
             UserCreateCommand command = new UserCreateCommand(name, username, uuid, password, email);

@@ -1,17 +1,18 @@
 package dev.udd.user.infrastructure.controller;
 
-import dev.udd.shared.application.ErrorResponse;
-import dev.udd.user.application.UserFinder;
-import dev.udd.user.application.query.UserFindQuery;
-import dev.udd.user.application.response.UserResponse;
-import dev.udd.user.domain.UserNotFound;
-import dev.udd.user.domain.UserValueInvalid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import dev.udd.shared.application.ErrorResponse;
+import dev.udd.user.application.UserFinder;
+import dev.udd.user.application.query.UserFindQuery;
+import dev.udd.user.application.response.UserResponse;
+import dev.udd.user.domain.UserNotFound;
+import dev.udd.user.domain.UserValueInvalid;
 
 @RestController
 final public class UserGetController {
@@ -20,7 +21,7 @@ final public class UserGetController {
     public UserFinder service;
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity getUser(@PathVariable String userId) {
+    public ResponseEntity<Object> getUser(@PathVariable String userId) {
 
         UserFindQuery query = new UserFindQuery(userId);
         UserResponse userResponse = null;

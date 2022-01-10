@@ -7,6 +7,7 @@ final public class UserUpdateCommand {
     private String uuid;
     private String password;
     private String email;
+
     public UserUpdateCommand(String name, String username, String uuid, String password, String email) {
 
         this.name = name;

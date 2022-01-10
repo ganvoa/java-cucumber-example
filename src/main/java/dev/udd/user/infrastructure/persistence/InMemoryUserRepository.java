@@ -1,9 +1,14 @@
 package dev.udd.user.infrastructure.persistence;
 
-import dev.udd.user.domain.*;
+import java.util.HashMap;
+
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
+import dev.udd.user.domain.User;
+import dev.udd.user.domain.UserEmail;
+import dev.udd.user.domain.UserId;
+import dev.udd.user.domain.UserRepository;
+import dev.udd.user.domain.UserUsername;
 
 @Component
 final public class InMemoryUserRepository implements UserRepository {
