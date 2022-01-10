@@ -1,6 +1,6 @@
 package dev.udd.user.domain;
 
-import java.util.regex.Pattern;
+import org.apache.commons.validator.routines.EmailValidator;
 
 public final class UserEmail {
 
@@ -17,11 +17,9 @@ public final class UserEmail {
             throw new UserValueInvalid("email is invalid");
         }
 
-        boolean isValid = Pattern.compile(
-                "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
-                .matcher(email).matches();
+        var validator = EmailValidator.getInstance();
 
-        if (!isValid) {
+        if (!validator.isValid(email)) {
             throw new UserValueInvalid("email is invalid");
         }
 
