@@ -1,5 +1,5 @@
 
-[![CircleCI](https://circleci.com/gh/ganvoa/udd/tree/main.svg?style=svg)](https://circleci.com/gh/ganvoa/udd/tree/main)
+[![CircleCI](https://circleci.com/gh/ganvoa/java-cucumber-example/tree/main.svg?style=svg)](https://circleci.com/gh/ganvoa/java-cucumber-example/tree/main)
 
 ### Prerequisites
 
